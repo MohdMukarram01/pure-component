@@ -1,0 +1,33 @@
+import { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { render } from "@testing-library/react";
+import { Table } from 'react-bootstrap'
+import React,{PureComponent} from "react";
+
+// In real-life React development, PureComponent is 
+// often used to optimize the rendering performance of a component. It achieves this by 
+// automatically implementing a shallow comparison of the component's props and state in the
+//  shouldComponentUpdate lifecycle method. If the props and state haven't changed, 
+//  the component will not re-render, saving processing time.
+
+class App extends PureComponent{
+  constructor(){
+    super();
+    this.state={
+      count:1
+    }
+  }
+
+  render()
+  {
+    console.log("check rerendering")
+    return(
+      <div className="App">
+        <h1>Pure Component:{this.state.count}</h1>
+        <button onClick={()=>this.setState({count:this.state.count+1})}>update count</button>
+      </div>
+    )
+  }
+}
+export default App ;
